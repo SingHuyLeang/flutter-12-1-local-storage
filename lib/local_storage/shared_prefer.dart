@@ -14,4 +14,14 @@ class SharedPrefer {
     log('p : $p');
   }
 
+  Future<bool> read(String userEmail, String userPassword) async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    String email = pref.getString(emailKey) ?? "";
+    String password = pref.getString(passwordKey) ?? "";
+    if (email == userEmail && password == userPassword) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

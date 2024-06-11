@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:local_storage/local_storage/shared_prefer.dart';
+import 'package:local_storage/view/sign_in_screen.dart';
 import 'package:local_storage/widget/custom_text_field.dart';
 import 'package:local_storage/widget/title_and_description_widget.dart';
 
@@ -65,6 +66,32 @@ class SignUpScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Already have an account ? ",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey[800],
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignInScreen(),
+                        )),
+                    child: const Text(
+                      "Sign In",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.indigo,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
