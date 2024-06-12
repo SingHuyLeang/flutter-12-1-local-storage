@@ -3,7 +3,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:local_storage/local_storage/shared_prefer.dart';
+import 'package:local_storage/controller/user_controller.dart';
+import 'package:local_storage/model/user_model.dart';
 import 'package:local_storage/view/home_screen.dart';
 import 'package:local_storage/widget/custom_text_field.dart';
 import 'package:local_storage/widget/title_and_description_widget.dart';
@@ -52,9 +53,10 @@ class SignInScreen extends StatelessWidget {
                 onPressed: () async {
                   if (emailContoller.text.isNotEmpty &&
                       passwordContoller.text.isNotEmpty) {
-                    bool okay = await SharedPrefer()
-                        .read(emailContoller.text, passwordContoller.text);
-                    if (okay) {
+                    if (await UserController().signIn(UserModel(
+                        id: 0,
+                        email: emailContoller.text,
+                        password: passwordContoller.text))) {
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(

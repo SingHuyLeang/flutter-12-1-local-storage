@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:local_storage/controller/user_controller.dart';
 import 'package:local_storage/local_storage/shared_prefer.dart';
+import 'package:local_storage/model/user_model.dart';
 import 'package:local_storage/view/sign_in_screen.dart';
 import 'package:local_storage/widget/custom_text_field.dart';
 import 'package:local_storage/widget/title_and_description_widget.dart';
@@ -50,10 +52,7 @@ class SignUpScreen extends StatelessWidget {
                 onPressed: () {
                   if (emailContoller.text.isNotEmpty &&
                       passwordContoller.text.isNotEmpty) {
-                    SharedPrefer().write(
-                      emailContoller.text,
-                      passwordContoller.text,
-                    );
+                    UserController().signUp(UserModel(id: 0, email: emailContoller.text, password: passwordContoller.text));
                   } else {
                     log("message : enter all field");
                   }
